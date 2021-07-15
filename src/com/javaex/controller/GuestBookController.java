@@ -3,7 +3,6 @@ package com.javaex.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +42,7 @@ public class GuestBookController extends HttpServlet {
 
 		} else if ("insert".equals(action)) {
 
-			// 입력된 파라미터 값 꺼내기(name, pw, content)
+			// 파라미터 값 꺼내기(name, password, content)
 			String name = request.getParameter("name");
 			String password = request.getParameter("pw");
 			String content = request.getParameter("content");
@@ -70,7 +69,7 @@ public class GuestBookController extends HttpServlet {
 
 		} else if ("delete".equals(action)) {
 
-			// 입력된 파라미터 값 꺼내기(no, password)
+			// 파라미터 값 꺼내기(no, password)
 			int no = Integer.parseInt(request.getParameter("no"));
 			String password = request.getParameter("pass");
 
