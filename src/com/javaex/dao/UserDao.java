@@ -57,6 +57,8 @@ public class UserDao {
 	// 메소드 - GS
 
 	// 메소드 - 일반
+
+	// 유저 저장
 	public int insert(UserVo userVo) {
 
 		int count = -1;
@@ -97,6 +99,56 @@ public class UserDao {
 		this.close();
 
 		return count;
+	}
+
+	// 유저 1명 정보 가져오기
+	public UserVo getUser(String id, String pass) {
+
+		UserVo userVo = null;
+
+		// 2번, 4번 메소드
+		this.getConnection();
+
+		try {
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String selectOne = "";
+			selectOne += " SELECT ";
+			selectOne += "     no, ";
+			selectOne += "     name ";
+			selectOne += " FROM ";
+			selectOne += "     users ";
+			selectOne += " WHERE ";
+			selectOne += "     id = ? ";
+			selectOne += "     AND password = ? ";
+
+			pstmt = conn.prepareStatement(selectOne);
+
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+
+			rs = pstmt.executeQuery();
+
+			// 4.결과처리
+			while (rs.next()) {
+				int no = rs.getInt("no");
+				String name = rs.getString("name");
+
+				userVo = new UserVo();
+
+				// 생성자가 없는 경우 setter를 이용할 수 있다.
+				userVo.setNo(no);
+				userVo.setName(name);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		// 5번 메소드
+		this.close();
+
+		return userVo;
 	}
 
 }
