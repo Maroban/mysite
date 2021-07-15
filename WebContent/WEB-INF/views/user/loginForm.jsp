@@ -13,7 +13,7 @@
 
     <div id="header" class="clearfix">
       <h1>
-        <a href="http://localhost:8088/mysite/main">MySite</a>
+        <a href="/mysite/main">MySite</a>
       </h1>
 
       <!--
@@ -24,8 +24,8 @@
 			</ul>
 			-->
       <ul>
-        <li><a href="http://localhost:8088/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
-        <li><a href="http://localhost:8088/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
+        <li><a href="/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
+        <li><a href="/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
       </ul>
 
     </div>
@@ -36,7 +36,7 @@
         <li><a href="">입사지원서</a></li>
         <li><a href="">게시판</a></li>
         <li><a href="">갤러리</a></li>
-        <li><a href="http://localhost:8088/mysite/guest?action=addList">방명록</a></li>
+        <li><a href="/mysite/guest?action=addList">방명록</a></li>
       </ul>
     </div>
     <!-- //nav -->
@@ -46,8 +46,8 @@
         <h2>회원</h2>
         <ul>
           <li>회원정보</li>
-          <li><a href="http://localhost:8088/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
-          <li><a href="http://localhost:8088/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
+          <li><a href="/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
+          <li><a href="/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
         </ul>
       </div>
       <!-- //aside -->
@@ -69,18 +69,18 @@
 
         <div id="user">
           <div id="loginForm">
-            <form action="" method="">
+            <form action="/mysite/user" method="get">
 
               <!-- 아이디 -->
               <div class="form-group">
                 <label class="form-text" for="input-uid">아이디</label>
-                <input type="text" id="input-uid" name="" value="" placeholder="아이디를 입력하세요">
+                <input type="text" id="input-uid" name="id" value="" placeholder=" 아이디를 입력하세요">
               </div>
 
               <!-- 비밀번호 -->
               <div class="form-group">
                 <label class="form-text" for="input-pass">비밀번호</label>
-                <input type="text" id="input-pass" name="" value="" placeholder="비밀번호를 입력하세요">
+                <input type="password" id="input-pass" name="pw" value="" placeholder=" 비밀번호를 입력하세요">
               </div>
 
 
@@ -88,6 +88,8 @@
               <div class="button-area">
                 <button type="submit" id="btn-submit">로그인</button>
               </div>
+
+              <input type="text" name="action" value="login">
 
             </form>
           </div>

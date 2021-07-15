@@ -19,7 +19,7 @@ int no = (int) request.getAttribute("no");
 
     <div id="header" class="clearfix">
       <h1>
-        <a href="http://localhost:8088/mysite/main">MySite</a>
+        <a href="/mysite/main">MySite</a>
       </h1>
 
       <!--
@@ -30,8 +30,8 @@ int no = (int) request.getAttribute("no");
 			</ul>
 			-->
       <ul>
-        <li><a href="http://localhost:8088/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
-        <li><a href="http://localhost:8088/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
+        <li><a href="/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
+        <li><a href="/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
       </ul>
 
     </div>
@@ -42,7 +42,7 @@ int no = (int) request.getAttribute("no");
         <li><a href="">입사지원서</a></li>
         <li><a href="">게시판</a></li>
         <li><a href="">갤러리</a></li>
-        <li><a href="http://localhost:8088/mysite/guest?action=addList">방명록</a></li>
+        <li><a href="/mysite/guest?action=addList">방명록</a></li>
       </ul>
     </div>
     <!-- //nav -->
@@ -85,7 +85,7 @@ int no = (int) request.getAttribute("no");
                 <td>비밀번호</td>
                 <td><input type="password" name="pass" value=""></td>
                 <td class="text-left"><button type="submit">삭제</button></td>
-                <td><a href="http://localhost:8088/mysite/guest?action=addList">[메인으로 돌아가기]</a></td>
+                <td><a href="/mysite/guest?action=addList">[메인으로 돌아가기]</a></td>
               </tr>
             </table>
             <input type="hidden" name="no" value="<%=no%>">
