@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
+// 로그인 실패 시 result=fail로 리다이렉트 되며, result=fail 값을 가져오기 위해 사용한다.
 String result = request.getParameter("result");
 %>
 <!DOCTYPE html>
