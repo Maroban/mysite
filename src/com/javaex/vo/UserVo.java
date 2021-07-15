@@ -9,6 +9,8 @@ public class UserVo {
 	private String name;
 	private String gender;
 
+
+
 	// 생성자
 	public UserVo() {
 
@@ -24,6 +26,13 @@ public class UserVo {
 	public UserVo(int no, String id, String pw, String name, String gender) {
 		this.no = no;
 		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.gender = gender;
+	}
+
+	public UserVo(int no, String pw, String name, String gender) {
+		this.no = no;
 		this.pw = pw;
 		this.name = name;
 		this.gender = gender;

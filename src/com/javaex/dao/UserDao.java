@@ -101,7 +101,7 @@ public class UserDao {
 		return count;
 	}
 
-	// 유저 1명 정보 가져오기
+	// 유저 1명 정보 가져오기(로그인)
 	public UserVo getUser(String id, String pass) {
 
 		UserVo userVo = null;
@@ -114,7 +114,8 @@ public class UserDao {
 			String selectOne = "";
 			selectOne += " SELECT ";
 			selectOne += "     no, ";
-			selectOne += "     name ";
+			selectOne += "     name, ";
+			selectOne += "     gender ";
 			selectOne += " FROM ";
 			selectOne += "     users ";
 			selectOne += " WHERE ";
@@ -132,12 +133,14 @@ public class UserDao {
 			while (rs.next()) {
 				int no = rs.getInt("no");
 				String name = rs.getString("name");
+				String gender = rs.getString("gender");
 
 				userVo = new UserVo();
 
 				// 생성자가 없는 경우 setter를 이용할 수 있다.
 				userVo.setNo(no);
 				userVo.setName(name);
+				userVo.setGender(gender);
 
 			}
 
@@ -149,6 +152,95 @@ public class UserDao {
 		this.close();
 
 		return userVo;
+	}
+
+	// 유저 1명 정보 가져오기(회원정보 수정)
+	public UserVo getUser(int userNo) {
+
+		UserVo userVo = null;
+
+		// 2번, 4번 메소드
+		this.getConnection();
+
+		try {
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String selectOne = "";
+			selectOne += " SELECT ";
+			selectOne += "     no, ";
+			selectOne += "     name, ";
+			selectOne += "     password, ";
+			selectOne += "     gender ";
+			selectOne += " FROM ";
+			selectOne += "     users ";
+			selectOne += " WHERE ";
+			selectOne += "     no = ? ";
+
+			pstmt = conn.prepareStatement(selectOne);
+
+			pstmt.setInt(1, userNo);
+
+			rs = pstmt.executeQuery();
+
+			// 4.결과처리
+			while (rs.next()) {
+				int no = rs.getInt("no");
+				String name = rs.getString("name");
+				String password = rs.getString("password");
+				String gender = rs.getString("gender");
+
+				userVo = new UserVo();
+
+				// 생성자가 없는 경우 setter를 이용할 수 있다.
+				userVo = new UserVo(no, name, password, gender);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		// 5번 메소드
+		this.close();
+
+		return userVo;
+	}
+
+	// 회원정보 수정
+	public void update(UserVo userVo) {
+
+		// 2번, 4번 메소드
+		this.getConnection();
+
+		try {
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String update = "";
+			update += " UPDATE users ";
+			update += " SET ";
+			update += "     password = ?, ";
+			update += "     name = ?, ";
+			update += "     gender = ? ";
+			update += " WHERE ";
+			update += "     no = ? ";
+
+			pstmt = conn.prepareStatement(update);
+
+			pstmt.setString(1, userVo.getPw());
+			pstmt.setString(2, userVo.getName());
+			pstmt.setString(3, userVo.getGender());
+			pstmt.setInt(4, userVo.getNo());
+
+			pstmt.executeUpdate();
+
+			// 4.결과처리
+
+			System.out.println("수정되었습니다.");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		// 5번 메소드
+		this.close();
 	}
 
 }
