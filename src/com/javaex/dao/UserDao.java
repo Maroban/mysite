@@ -114,8 +114,7 @@ public class UserDao {
 			String selectOne = "";
 			selectOne += " SELECT ";
 			selectOne += "     no, ";
-			selectOne += "     name, ";
-			selectOne += "     gender ";
+			selectOne += "     name ";
 			selectOne += " FROM ";
 			selectOne += "     users ";
 			selectOne += " WHERE ";
@@ -133,14 +132,12 @@ public class UserDao {
 			while (rs.next()) {
 				int no = rs.getInt("no");
 				String name = rs.getString("name");
-				String gender = rs.getString("gender");
 
 				userVo = new UserVo();
 
 				// 생성자가 없는 경우 setter를 이용할 수 있다.
 				userVo.setNo(no);
 				userVo.setName(name);
-				userVo.setGender(gender);
 
 			}
 
@@ -188,9 +185,6 @@ public class UserDao {
 				String password = rs.getString("password");
 				String gender = rs.getString("gender");
 
-				userVo = new UserVo();
-
-				// 생성자가 없는 경우 setter를 이용할 수 있다.
 				userVo = new UserVo(no, name, password, gender);
 
 			}
