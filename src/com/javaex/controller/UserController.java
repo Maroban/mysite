@@ -153,7 +153,8 @@ public class UserController extends HttpServlet {
 			HttpSession session = request.getSession();
 
 			// 회원정보 수정 후 세션에 저장
-			session.setAttribute("authUser", userVo);
+			// session.setAttribute("authUser", userVo);  --> 덮어쓰기
+			((UserVo)session.getAttribute("authUser")).setName(name); // --> 이름만 수정
 
 			// 리다이렉트 - 메인
 			WebUtil.redirect(request, response, "/mysite/main");
