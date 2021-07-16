@@ -4,11 +4,6 @@
 <%
 // userVo 데이터를 getAttribute() 통해서 가져오기
 UserVo userVo = (UserVo) request.getAttribute("userVo");
-
-// getNo, getGender 값을 각각 no, gender에 저장
-int no = userVo.getNo();
-String gender = userVo.getGender();
-
 %>
 
 <!DOCTYPE html>
@@ -55,7 +50,7 @@ String gender = userVo.getGender();
 
         <div id="user">
           <div id="modifyForm">
-            <form action="/mysite/user" method="get">
+            <form action="/mysite/user" method="post">
 
               <!-- 아이디 -->
               <div class="form-group">
@@ -66,21 +61,21 @@ String gender = userVo.getGender();
               <!-- 비밀번호 -->
               <div class="form-group">
                 <label class="form-text" for="input-pass">패스워드</label>
-                <input type="text" id="input-pass" name="pw" value="" placeholder="비밀번호를 입력하세요">
+                <input type="password" id="input-pass" name="pw" value="<%=userVo.getPw()%>" placeholder="비밀번호를 입력하세요">
               </div>
 
-              <!-- 이메일 -->
+              <!-- 이름 -->
               <div class="form-group">
                 <label class="form-text" for="input-name">이름</label>
-                <input type="text" id="input-name" name="name" value="" placeholder="이름을 입력하세요">
+                <input type="text" id="input-name" name="name" value="<%=userVo.getName()%>" placeholder="이름을 입력하세요">
               </div>
 
-              <!-- //나이 -->
+              <!-- 성별 -->
               <div class="form-group">
                 <span class="form-text">성별</span>
 
                 <%
-                if ("male".equals(gender)) {
+                if ("male".equals(userVo.getGender())) {
                 %>
 
                 <label for="rdo-male">남</label>
@@ -90,7 +85,7 @@ String gender = userVo.getGender();
                 <input type="radio" id="rdo-female" name="gender" value="female">
 
                 <%
-                } else if ("female".equals(gender)) {
+                } else if ("female".equals(userVo.getGender())) {
                 %>
 
                 <label for="rdo-male">남</label>
@@ -110,7 +105,7 @@ String gender = userVo.getGender();
               <div class="button-area">
                 <button type="submit" id="btn-submit">회원정보수정</button>
               </div>
-              <input type="hidden" name="no" value="<%=no%>">
+              <input type="hidden" name="no" value="<%=userVo.getNo()%>">
               <input type="hidden" name="action" value="update">
 
             </form>
