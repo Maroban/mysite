@@ -9,8 +9,6 @@ public class UserVo {
 	private String name;
 	private String gender;
 
-
-
 	// 생성자
 	public UserVo() {
 
@@ -31,7 +29,7 @@ public class UserVo {
 		this.gender = gender;
 	}
 
-	public UserVo(int no, String pw, String name, String gender) {
+	public UserVo(int no, String name, String pw, String gender) {
 		this.no = no;
 		this.pw = pw;
 		this.name = name;
@@ -84,6 +82,5 @@ public class UserVo {
 	public String toString() {
 		return "UserVo [no=" + no + ", id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender + "]";
 	}
-
 
 }
