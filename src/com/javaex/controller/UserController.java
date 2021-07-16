@@ -139,12 +139,12 @@ public class UserController extends HttpServlet {
 
 			// 파라미터 값 꺼내기(no, pw, name, gender)
 			int no = Integer.parseInt(request.getParameter("no"));
-			String pw = request.getParameter("pw");
 			String name = request.getParameter("name");
+			String pw = request.getParameter("pw");
 			String gender = request.getParameter("gender");
 
 			// Vo로 묶기
-			UserVo userVo = new UserVo(no, pw, name, gender);
+			UserVo userVo = new UserVo(no, name, pw, gender);
 
 			// update() 메소드 사용
 			userDao.update(userVo);
