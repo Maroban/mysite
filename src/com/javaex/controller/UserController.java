@@ -73,7 +73,7 @@ public class UserController extends HttpServlet {
 			// Dao.getUser() 메소드 사용
 			UserVo userVo = userDao.getUser(id, password);
 
-			if (userVo != null) {  // 로그인 성공일 때(id, pw 일치했을 때)
+			if (userVo != null) { // 로그인 성공일 때(id, pw 일치했을 때)
 
 				// session 객체 생성
 				HttpSession session = request.getSession();
@@ -84,7 +84,7 @@ public class UserController extends HttpServlet {
 				// 리다이렉트 - 메인
 				WebUtil.redirect(request, response, "/mysite/main");
 
-			} else {  // 로그인 실패일 때
+			} else { // 로그인 실패일 때
 				System.out.println("로그인 실패");
 
 				// 리다이렉트 - 로그인폼
