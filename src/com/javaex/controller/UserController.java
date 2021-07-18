@@ -117,7 +117,7 @@ public class UserController extends HttpServlet {
 
 			if (authUser != null) { // 로그인 상태일 때 회원 수정
 
-				// authUser.getNo()를 이용해 getUser() 메소드 사용(회원정보 가져오기 위함)
+				// authUser.getNo()를 이용해 getUser() 메소드 사용(no에 맞는 회원정보를 가져오기 위함)
 				UserVo userVo = userDao.getUser(authUser.getNo());
 
 				// getUser() 메소드 데이터를 request에 저장
