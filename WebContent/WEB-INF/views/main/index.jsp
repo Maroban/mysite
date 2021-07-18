@@ -12,6 +12,7 @@
 
 <body>
   <div id="wrap">
+
     <!-- header include -->
     <jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 
