@@ -1,11 +1,5 @@
-<%@page import="com.javaex.vo.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<%
-// userVo 데이터를 getAttribute() 통해서 가져오기
-UserVo userVo = (UserVo) request.getAttribute("userVo");
-%>
 
 <!DOCTYPE html>
 <html>
