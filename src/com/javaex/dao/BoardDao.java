@@ -79,7 +79,9 @@ public class BoardDao {
 			select += "     b.no = ? ";
 
 			pstmt = conn.prepareStatement(select);
+
 			pstmt.setInt(1, boardNo);
+
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -127,8 +129,11 @@ public class BoardDao {
 			select += "     board  b ";
 			select += " WHERE ";
 			select += "     u.no = b.user_no ";
+			select += " ORDER BY ";
+			select += "     b.reg_date DESC ";
 
 			pstmt = conn.prepareStatement(select);
+
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -170,7 +175,9 @@ public class BoardDao {
 			hit += "     no = ? ";
 
 			pstmt = conn.prepareStatement(hit);
+
 			pstmt.setInt(1, no);
+
 			pstmt.executeUpdate();
 
 			// 4.결과처리
@@ -200,9 +207,11 @@ public class BoardDao {
 			update += "     no = ? ";
 
 			pstmt = conn.prepareStatement(update);
+
 			pstmt.setString(1, boardVo.getTitle());
 			pstmt.setString(2, boardVo.getContent());
 			pstmt.setInt(3, boardVo.getNo());
+
 			pstmt.executeUpdate();
 
 			// 4.결과처리
@@ -234,9 +243,11 @@ public class BoardDao {
 			insert += " ) ";
 
 			pstmt = conn.prepareStatement(insert);
+
 			pstmt.setString(1, boardVo.getTitle());
 			pstmt.setString(2, boardVo.getContent());
 			pstmt.setInt(3, boardVo.getUser_no());
+
 			pstmt.executeUpdate();
 
 			// 4.결과처리
@@ -263,7 +274,9 @@ public class BoardDao {
 			delete += "     no = ? ";
 
 			pstmt = conn.prepareStatement(delete);
+
 			pstmt.setInt(1, no);
+
 			pstmt.executeUpdate();
 
 			// 4.결과처리
@@ -306,6 +319,7 @@ public class BoardDao {
 			search += "     b.reg_date DESC ";
 
 			pstmt = conn.prepareStatement(search);
+
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

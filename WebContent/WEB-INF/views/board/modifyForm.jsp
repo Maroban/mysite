@@ -17,75 +17,77 @@
 
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
-    <c:import url="/WEB-INF/views/includes/aside.jsp"></c:import>
+    <div id="container" class="clearfix">
 
-    <div id="content">
+      <c:import url="/WEB-INF/views/includes/aside.jsp"></c:import>
 
-      <div id="content-head">
-        <h3>게시판</h3>
-        <div id="location">
-          <ul>
-            <li>홈</li>
-            <li>게시판</li>
-            <li class="last">일반게시판</li>
-          </ul>
+      <div id="content">
+
+        <div id="content-head">
+          <h3>게시판</h3>
+          <div id="location">
+            <ul>
+              <li>홈</li>
+              <li>게시판</li>
+              <li class="last">일반게시판</li>
+            </ul>
+          </div>
+          <div class="clear"></div>
         </div>
-        <div class="clear"></div>
-      </div>
-      <!-- //content-head -->
+        <!-- //content-head -->
 
-      <div id="board">
-        <div id="modifyForm">
-          <form action="" method="post">
-            <!-- 작성자 -->
-            <div class="form-group">
-              <span class="form-text">작성자</span>
-              <span class="form-value">${readBoard.name}</span>
-            </div>
+        <div id="board">
+          <div id="modifyForm">
+            <form action="" method="post">
+              <!-- 작성자 -->
+              <div class="form-group">
+                <span class="form-text">작성자</span>
+                <span class="form-value">${readBoard.name}</span>
+              </div>
 
-            <!-- 조회수 -->
-            <div class="form-group">
-              <span class="form-text">조회수</span>
-              <span class="form-value">${readBoard.hit}</span>
-            </div>
+              <!-- 조회수 -->
+              <div class="form-group">
+                <span class="form-text">조회수</span>
+                <span class="form-value">${readBoard.hit}</span>
+              </div>
 
-            <!-- 작성일 -->
-            <div class="form-group">
-              <span class="form-text">작성일</span>
-              <span class="form-value">${readBoard.reg_date}</span>
-            </div>
+              <!-- 작성일 -->
+              <div class="form-group">
+                <span class="form-text">작성일</span>
+                <span class="form-value">${readBoard.reg_date}</span>
+              </div>
 
-            <!-- 제목 -->
-            <div class="form-group">
-              <label class="form-text" for="txt-title">제목</label>
-              <input type="text" id="txt-title" name="title" value="${readBoard.title}">
-            </div>
+              <!-- 제목 -->
+              <div class="form-group">
+                <label class="form-text" for="txt-title">제목</label>
+                <input type="text" id="txt-title" name="title" value="${readBoard.title}">
+              </div>
 
-            <!-- 내용 -->
-            <div class="form-group">
-              <textarea id="txt-content" name="content">${readBoard.content}</textarea>
-            </div>
+              <!-- 내용 -->
+              <div class="form-group">
+                <textarea id="txt-content" name="content">${readBoard.content}</textarea>
+              </div>
 
-            <a id="btn_cancel" href="/mysite/board?action=list">취소</a>
-            <input type="text" value="${readBoard.user_no}">
-            <input type="text" value="${authUser.no}">
-            <button id="btn_modify" type="submit">수정</button>
-            <input type="hidden" name="action" value="modify">
-            <input type="hidden" name="no" value="${readBoard.no}">
+              <a id="btn_cancel" href="/mysite/board?action=list">취소</a>
+              <input type="text" value="${readBoard.user_no}">
+              <input type="text" value="${authUser.no}">
+              <button id="btn_modify" type="submit">수정</button>
+              <input type="hidden" name="action" value="modify">
+              <input type="hidden" name="no" value="${readBoard.no}">
 
-          </form>
-          <!-- //form -->
+            </form>
+            <!-- //form -->
+          </div>
+          <!-- //modifyForm -->
         </div>
-        <!-- //modifyForm -->
+        <!-- //board -->
       </div>
-      <!-- //board -->
+      <!-- //content  -->
+
     </div>
-    <!-- //content  -->
+    <!-- //container  -->
 
-  </div>
-  <!-- //container  -->
-
-  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
   </div>
   <!-- //wrap -->

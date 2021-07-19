@@ -97,6 +97,7 @@ public class BoardController extends HttpServlet {
 			int no = Integer.parseInt(request.getParameter("no"));
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			content = content.replace("\r\n", "<br>");
 
 			// Vo로 묶기
 			BoardVo boardVo = new BoardVo(no, title, content);
@@ -126,6 +127,7 @@ public class BoardController extends HttpServlet {
 			int user_no = authUser.getNo();
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			content = content.replace("\r\n", "<br>");
 
 			// Vo로 묶기
 			BoardVo boardVo = new BoardVo(title, content, user_no);

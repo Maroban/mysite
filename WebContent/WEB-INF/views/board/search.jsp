@@ -15,105 +15,108 @@
   <div id="wrap">
 
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-    <c:import url="/WEB-INF/views/includes/aside.jsp"></c:import>
 
-    <div id="content">
+    <div id="container" class="clearfix">
 
-      <div id="content-head">
-        <h3>게시판</h3>
-        <div id="location">
-          <ul>
-            <li>홈</li>
-            <li>게시판</li>
-            <li class="last">일반게시판</li>
-          </ul>
-        </div>
-        <div class="clear"></div>
-      </div>
-      <!-- //content-head -->
+      <c:import url="/WEB-INF/views/includes/aside.jsp"></c:import>
 
-      <div id="board">
-        <div id="list">
-          <form action="" method="get">
-            <div class="form-group text-right">
-              <input type="hidden" name="action" value="search">
-              <input type="text" name="search" value="">
-              <button type="submit" id=btn_search>검색</button>
-            </div>
-          </form>
+      <div id="content">
 
-          <table>
-            <thead>
-              <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>조회수</th>
-                <th>작성일</th>
-                <th>관리</th>
-              </tr>
-            </thead>
-            <tbody>
-              <c:forEach items="${searchList}" var="sList">
-                <tr>
-                  <td>${sList.no}</td>
-                  <td class="text-left"><a href="/mysite/board?action=read&no=${sList.no}">${sList.title}</a></td>
-                  <td>${sList.name}</td>
-                  <td>${sList.hit}</td>
-                  <td>${sList.reg_date}</td>
-                  <td><a href="/mysite/board?action=delete&no=${sList.no}">
-                      <c:choose>
-                        <c:when test="${authUser.no == sList.user_no}">[삭제]</c:when>
-
-                        <c:otherwise></c:otherwise>
-
-                      </c:choose>
-                    </a></td>
-                </tr>
-              </c:forEach>
-            </tbody>
-          </table>
-
-          <div id="paging">
+        <div id="content-head">
+          <h3>게시판</h3>
+          <div id="location">
             <ul>
-              <li><a href="">◀</a></li>
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li class="active"><a href="">5</a></li>
-              <li><a href="">6</a></li>
-              <li><a href="">7</a></li>
-              <li><a href="">8</a></li>
-              <li><a href="">9</a></li>
-              <li><a href="">10</a></li>
-              <li><a href="">▶</a></li>
+              <li>홈</li>
+              <li>게시판</li>
+              <li class="last">일반게시판</li>
             </ul>
-
-
-            <div class="clear"></div>
           </div>
-          <c:choose>
-            <c:when test="${authUser != null}">
-              <a id="btn_write" href="/mysite/board?action=writeForm">글쓰기</a>
-            </c:when>
-
-            <c:otherwise></c:otherwise>
-
-          </c:choose>
-
-
+          <div class="clear"></div>
         </div>
-        <!-- //list -->
+        <!-- //content-head -->
+
+        <div id="board">
+          <div id="list">
+            <form action="" method="get">
+              <div class="form-group text-right">
+                <input type="hidden" name="action" value="search">
+                <input type="text" name="search" value="">
+                <button type="submit" id=btn_search>검색</button>
+              </div>
+            </form>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>제목</th>
+                  <th>글쓴이</th>
+                  <th>조회수</th>
+                  <th>작성일</th>
+                  <th>관리</th>
+                </tr>
+              </thead>
+              <tbody>
+                <c:forEach items="${searchList}" var="sList">
+                  <tr>
+                    <td>${sList.no}</td>
+                    <td class="text-left"><a href="/mysite/board?action=read&no=${sList.no}">${sList.title}</a></td>
+                    <td>${sList.name}</td>
+                    <td>${sList.hit}</td>
+                    <td>${sList.reg_date}</td>
+                    <td><a href="/mysite/board?action=delete&no=${sList.no}">
+                        <c:choose>
+                          <c:when test="${authUser.no == sList.user_no}">[삭제]</c:when>
+
+                          <c:otherwise></c:otherwise>
+
+                        </c:choose>
+                      </a></td>
+                  </tr>
+                </c:forEach>
+              </tbody>
+            </table>
+
+            <div id="paging">
+              <ul>
+                <li><a href="">◀</a></li>
+                <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li class="active"><a href="">5</a></li>
+                <li><a href="">6</a></li>
+                <li><a href="">7</a></li>
+                <li><a href="">8</a></li>
+                <li><a href="">9</a></li>
+                <li><a href="">10</a></li>
+                <li><a href="">▶</a></li>
+              </ul>
+
+
+              <div class="clear"></div>
+            </div>
+            <c:choose>
+              <c:when test="${authUser != null}">
+                <a id="btn_write" href="/mysite/board?action=writeForm">글쓰기</a>
+              </c:when>
+
+              <c:otherwise></c:otherwise>
+
+            </c:choose>
+
+
+          </div>
+          <!-- //list -->
+        </div>
+        <!-- //board -->
       </div>
-      <!-- //board -->
+      <!-- //content  -->
+
     </div>
-    <!-- //content  -->
+    <!-- //container  -->
 
-  </div>
-  <!-- //container  -->
-
-  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
   </div>
   <!-- //wrap -->
