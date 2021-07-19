@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%
-// 로그인 실패 시 result=fail로 리다이렉트 되며, result=fail 값을 가져오기 위해 사용한다.
-String result = request.getParameter("result");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +13,7 @@ String result = request.getParameter("result");
 <body>
   <div id="wrap">
 
-    <!-- header include -->
-    <jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+    <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
     <div id="container" class="clearfix">
       <div id="aside">
@@ -61,15 +57,9 @@ String result = request.getParameter("result");
                 <input type="password" id="input-pass" name="pw" value="" placeholder=" 비밀번호를 입력하세요">
               </div>
 
-              <%
-              if ("fail".equals(result)) {
-              %>
-
-              <p>로그인에 실패했습니다. 다시 로그인 해주세요.</p>
-
-              <%
-              }
-              %>
+              <c:if test="${param.result != fail}">
+                <p>로그인에 실패했습니다. 다시 로그인 해주세요.</p>
+              </c:if>
 
               <!-- 버튼영역 -->
               <div class="button-area">
@@ -89,8 +79,7 @@ String result = request.getParameter("result");
     </div>
     <!-- //container  -->
 
-    <!-- footer include -->
-    <jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
   </div>
   <!-- //wrap -->

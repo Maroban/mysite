@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%
-// no 데이터를 getAttribute() 통해서 가져오기
-int no = (int) request.getAttribute("no");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +14,7 @@ int no = (int) request.getAttribute("no");
 <body>
   <div id="wrap">
 
-    <!-- header include -->
-    <jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+    <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
     <div id="container" class="clearfix">
       <div id="aside">
@@ -61,7 +57,7 @@ int no = (int) request.getAttribute("no");
                 <td><a href="/mysite/guest?action=addList">[메인으로 돌아가기]</a></td>
               </tr>
             </table>
-            <input type="hidden" name="no" value="<%=no%>">
+            <input type="hidden" name="no" value="${no}">
             <input type="hidden" name="action" value="delete">
           </form>
 
@@ -73,8 +69,7 @@ int no = (int) request.getAttribute("no");
     </div>
     <!-- //container  -->
 
-    <!-- footer include -->
-    <jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
   </div>
   <!-- //wrap -->

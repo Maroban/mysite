@@ -1,11 +1,6 @@
-<%@page import="com.javaex.vo.GuestbookVo"%>
-<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
-// guestList 데이터를 getAttribute() 통해서 가져오기
-List<GuestbookVo> guestList = (List<GuestbookVo>) request.getAttribute("gList");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +15,7 @@ List<GuestbookVo> guestList = (List<GuestbookVo>) request.getAttribute("gList");
 <body>
   <div id="wrap">
 
-    <!-- header include -->
-    <jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+    <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
     <div id="container" class="clearfix">
       <div id="aside">
@@ -77,29 +71,26 @@ List<GuestbookVo> guestList = (List<GuestbookVo>) request.getAttribute("gList");
 
           </form>
 
-          <%
-          for (int i = 0; i < guestList.size(); i++) {
-          %>
-          <table class="guestRead">
-            <colgroup>
-              <col style="width: 10%;">
-              <col style="width: 40%;">
-              <col style="width: 40%;">
-              <col style="width: 10%;">
-            </colgroup>
-            <tr>
-              <td><%=guestList.get(i).getNo()%></td>
-              <td><%=guestList.get(i).getName()%></td>
-              <td><%=guestList.get(i).getReg_date()%></td>
-              <td><a href="/mysite/guest?action=dform&no=<%=guestList.get(i).getNo()%>">[삭제]</a></td>
-            </tr>
-            <tr>
-              <td colspan=4 class="text-left"><%=guestList.get(i).getContent()%></td>
-            </tr>
-          </table>
-          <%
-          }
-          %>
+          <c:forEach items="${gList}" var="gList">
+            <table class="guestRead">
+              <colgroup>
+                <col style="width: 10%;">
+                <col style="width: 40%;">
+                <col style="width: 40%;">
+                <col style="width: 10%;">
+              </colgroup>
+              <tr>
+                <td>${gList.no}</td>
+                <td>${gList.name}</td>
+                <td>${gList.reg_date}</td>
+                <td><a href="/mysite/guest?action=dform&no=${gList.no}">[삭제]</a></td>
+              </tr>
+              <tr>
+                <td colspan=4 class="text-left">${gList.content}</td>
+              </tr>
+            </table>
+          </c:forEach>
+
           <!-- //guestRead -->
 
         </div>
@@ -110,8 +101,7 @@ List<GuestbookVo> guestList = (List<GuestbookVo>) request.getAttribute("gList");
     </div>
     <!-- //container  -->
 
-    <!-- footer include -->
-    <jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
   </div>
   <!-- //wrap -->
