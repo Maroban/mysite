@@ -19,7 +19,8 @@ public class BoardVo {
 
 	}
 
-	public BoardVo(int no, String id, String name, String title, int hit, String content, String reg_date, int user_no) {
+	public BoardVo(int no, String id, String name, String title, int hit, String content, String reg_date,
+			int user_no) {
 		this.no = no;
 		this.title = title;
 		this.content = content;
@@ -85,6 +86,7 @@ public class BoardVo {
 	}
 
 	// 메소드 - GS
+
 	public int getNo() {
 		return no;
 	}
