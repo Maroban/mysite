@@ -290,7 +290,7 @@ public class BoardDao {
 	}
 
 	// 키워드 검색
-	public List<BoardVo> search(String keyword) {
+	public List<BoardVo> boardList(String keyword) {
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
 
 		// 2번, 4번 메소드
