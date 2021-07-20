@@ -69,8 +69,6 @@
               </div>
 
               <a id="btn_cancel" href="/mysite/board?action=list">취소</a>
-              <input type="text" value="${readBoard.user_no}">
-              <input type="text" value="${authUser.no}">
               <button id="btn_modify" type="submit">수정</button>
               <input type="hidden" name="action" value="modify">
               <input type="hidden" name="no" value="${readBoard.no}">
