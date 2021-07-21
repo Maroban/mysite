@@ -13,6 +13,7 @@ public class BoardVo {
 	private String pw;
 	private String name;
 	private String gender;
+	private int rownum;
 
 	// 생성자
 	public BoardVo() {
@@ -43,11 +44,14 @@ public class BoardVo {
 		this.content = content;
 	}
 
-	public BoardVo(int no, String title, int hit, String name, String reg_date, int user_no) {
+	public BoardVo(int rounum, int no, String title, int hit, String name, String content, String reg_date,
+			int user_no) {
+		this.rownum = rounum;
 		this.no = no;
 		this.title = title;
 		this.hit = hit;
 		this.reg_date = reg_date;
+		this.content = content;
 		this.name = name;
 		this.user_no = user_no;
 	}
@@ -89,6 +93,14 @@ public class BoardVo {
 
 	public int getNo() {
 		return no;
+	}
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
 
 	public void setNo(int no) {
