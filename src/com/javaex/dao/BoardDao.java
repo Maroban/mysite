@@ -124,26 +124,45 @@ public class BoardDao {
 			// 3. SQL문 준비 / 바인딩 / 실행
 			String search = "";
 			search += " SELECT ";
-			search += "     b.no, ";
-			search += "     b.title, ";
-			search += "     b.hit, ";
-			search += "     u.name, ";
-			search += "     b.reg_date, ";
-			search += "     b.user_no ";
+			search += "     rn, ";
+			search += "     ub.no, ";
+			search += "     ub.title, ";
+			search += "     ub.hit, ";
+			search += "     ub.name, ";
+			search += "     ub.content, ";
+			search += "     ub.reg_date, ";
+			search += "     ub.user_no ";
 			search += " FROM ";
-			search += "     users  u, ";
-			search += "     board  b ";
-			search += " WHERE ";
-			search += "     u.no = b.user_no ";
+			search += "     ( ";
+			search += "         SELECT ";
+			search += "             ROWNUM rn, ";
+			search += "             b.no, ";
+			search += "             b.title, ";
+			search += "             b.hit, ";
+			search += "             u.name, ";
+			search += "             b.content, ";
+			search += "             b.reg_date, ";
+			search += "             b.user_no ";
+			search += "         FROM ";
+			search += "             users  u, ";
+			search += "             board  b ";
+			search += "         WHERE ";
+			search += "             u.no = b.user_no ";
+			search += "         ORDER BY ";
+			search += "             b.reg_date ASC ";
+			search += "     ) ub ";
 
 			if (keyword == null || keyword.equals("")) {
 				search += " ORDER BY ";
-				search += "     b.reg_date DESC ";
+				search += "     rn DESC ";
 
 			} else {
-				search += "     AND (u.name || b.title || b.content) LIKE '%" + keyword + "%' ";
+				search += " WHERE ";
+				search += "     ( ub.name ";
+				search += "       || ub.title ";
+				search += "       || ub.content ) LIKE '%" + keyword + "%' ";
 				search += " ORDER BY ";
-				search += "     b.reg_date DESC ";
+				search += "     rn DESC ";
 
 			}
 
@@ -152,14 +171,16 @@ public class BoardDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
+				int rownum = rs.getInt("rn");
 				int no = rs.getInt("no");
 				String title = rs.getString("title");
 				int hit = rs.getInt("hit");
 				String name = rs.getString("name");
+				String content = rs.getString("content");
 				String reg_date = rs.getString("reg_date");
 				int userNo = rs.getInt("user_no");
 
-				BoardVo boardVo = new BoardVo(no, title, hit, name, reg_date, userNo);
+				BoardVo boardVo = new BoardVo(rownum, no, title, hit, name, content, reg_date, userNo);
 
 				boardList.add(boardVo);
 			}
