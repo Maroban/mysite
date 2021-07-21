@@ -111,3 +111,39 @@ WHERE
     OR b.reg_date LIKE '%안%'
 ORDER BY
     b.reg_date DESC;
+    
+-- rownum
+SELECT
+    rn,
+    ub.no,
+    ub.title,
+    ub.hit,
+    ub.name,
+    ub.content,
+    ub.reg_date,
+    ub.user_no
+FROM
+    (
+        SELECT
+            ROWNUM rn,
+            b.no,
+            b.title,
+            b.hit,
+            u.name,
+            b.content,
+            b.reg_date,
+            b.user_no
+        FROM
+            users  u,
+            board  b
+        WHERE
+            u.no = b.user_no
+        ORDER BY
+            b.reg_date ASC
+    ) ub
+WHERE
+    ( ub.name
+      || ub.title
+      || ub.content ) LIKE '%안%'
+ORDER BY
+    rn DESC;
