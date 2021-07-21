@@ -60,7 +60,7 @@
               <tbody>
                 <c:forEach items="${boardList}" var="bList" varStatus="status">
                   <tr>
-                    <td>${bList.no}</td>
+                    <td>${bList.rownum}</td>
                     <td class="text-left"><a href="/mysite/board?action=read&no=${bList.no}">${bList.title}</a></td>
                     <td>${bList.name}</td>
                     <td>${bList.hit}</td>
